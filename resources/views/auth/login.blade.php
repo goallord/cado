@@ -1,57 +1,62 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <section class="h-100 gradient-form" style="background-color: #cce5ff;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+                                    <div class="text-center">
+                                        <img src="{{asset('logo.png')}}"
+                                             style="width: 185px;" alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1">Catholic Archdiocese of Onitsha</h4>
+                                    </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label class="text-blue-600" for="login" :value="__('Enter email, username or phone number')" />
-            <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('login')" class="mt-2" />
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <p>Please login to your account</p>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            @error('login') <small class="text-danger">{{$message}}</small>  @enderror
+                                            <input type="text" name="login" id="login" class="form-control"
+                                                   placeholder="Phone number or email address" autofocus autocomplete="username" value="{{old('login')}}" />
+                                            <label class="form-label" for="login">Enter email, username or phone number</label>
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            @error('password') <small class="text-danger">{{$message}}</small>  @enderror
+                                            <input type="password" name="password" id="password" class="form-control" autocomplete="current-password" />
+                                            <label class="form-label" for="password">Password</label>
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log
+                                                in</button>
+                                            <a class="text-muted" href="{{ route('password.request') }}">Forgot password?</a>
+                                        </div>
+
+                                        <div class="d-flex align-items-center justify-content-center pb-4">
+                                            <p class="mb-0 me-2">Don't have an account?</p>
+                                            <a  href="{{ route('register') }}" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary">Create new</a>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">Basilica of the Most Holy Trinity</h4>
+                                    <p class="small mb-0">The Onitsha Archdiocese, located in Anambra State, Nigeria, plays a significant role in serving a substantial population of Catholic faithful. With a total of 2,185,561 Catholics, the Archdiocese comprises 136 parishes and is served by 498 priests. It is also supported by 718 religious individuals who fulfill various roles within the Catholic community.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label class="text-blue-600" for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-
-        <div class="mt-4 flex items-center justify-center">
-            <x-primary-button class="ms-3" style="">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-        <div class="flex items-center justify-center mt-4">
-            @if (Route::has('password.request'))
-                <a style="margin-right:20px" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-                &nbsp;
-                <span class="mx-2"> <!-- Add some margin between the links -->
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-                {{ __('Not registered?') }}
-            </a>
-        </span>
-            @endif
-
-
-        </div>
-    </form>
 </x-guest-layout>
