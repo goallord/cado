@@ -38,7 +38,6 @@
             }
         }
         label{
-            font-weight: bolder !important;
             color: #012c68;
         }
     </style>
