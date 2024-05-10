@@ -37,6 +37,10 @@
                 border-bottom-right-radius: .3rem;
             }
         }
+        label{
+            font-weight: bolder !important;
+            color: #012c68;
+        }
     </style>
 </head>
 <body>
