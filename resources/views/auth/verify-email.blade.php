@@ -11,7 +11,7 @@
                                     <div class="text-center">
                                         <img src="{{asset('logo.png')}}"
                                              style="width: 185px;" alt="logo">
-                                        <h4 class="mt-1 mb-5 pb-1">Catholic Archdiocese of Onitsha</h4>
+                                        <h4 class="mt-1 mb-5 pb-1">Verify Email Address</h4>
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4 text-sm text-gray-600 dark:text-gray-400">

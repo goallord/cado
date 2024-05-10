@@ -1,27 +1,53 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
-    </div>
+    <section class="h-100 gradient-form" style="background-color: #cce5ff;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
 
-    <form method="POST" action="{{ route('password.confirm') }}">
-        @csrf
+                                    <div class="text-center">
+                                        <img src="{{asset('logo.png')}}"
+                                             style="width: 185px;" alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1">Confirm Password</h4>
+                                    </div>
 
-        <!-- Password -->
-        <div>
-            <x-input-label for="password" :value="__('Password')" />
+                                    <div data-mdb-input-init class="form-outline mb-4 text-sm text-gray-600 dark:text-gray-400">
+                                        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+                                    </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                                    <form method="POST" action="{{ route('password.confirm') }}">
+                                        @csrf
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                   placeholder="Password" required autocomplete="current-password" />
+                                            <label class="form-label" for="password">Password</label>
+                                            @error('password') <small class="text-danger">{{$message}}</small> @enderror
+                                        </div>
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
+                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">
+                                                {{ __('Confirm') }}
+                                            </button>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">Basilica of the Most Holy Trinity</h4>
+                                    <p class="small mb-0">The Onitsha Archdiocese, located in Anambra State, Nigeria, plays a significant role in serving a substantial population of Catholic faithful. With a total of 2,185,561 Catholics, the Archdiocese comprises 136 parishes and is served by 498 priests. It is also supported by 718 religious individuals who fulfill various roles within the Catholic community.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="flex justify-end mt-4">
-            <x-primary-button>
-                {{ __('Confirm') }}
-            </x-primary-button>
-        </div>
-    </form>
+    </section>
 </x-guest-layout>
