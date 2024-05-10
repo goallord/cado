@@ -14,6 +14,11 @@
                                         <h4 class="mt-1 mb-5 pb-1">Catholic Archdiocese of Onitsha</h4>
                                     </div>
 
+                                    @if (session('status'))
+                                        <div class="mb-4 font-medium text-sm text-green-600">
+                                            {{ session('status') }}
+                                        </div>
+                                    @endif
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <p>Please login to your account</p>
